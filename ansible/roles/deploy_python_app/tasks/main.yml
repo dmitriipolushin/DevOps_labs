@@ -1,0 +1,7 @@
+---
+
+- name: Pull docker image
+  shell: docker pull dmitriipolushin/lab2_python_app:latest
+
+- name: Run docker image
+  shell: docker run -p 8000:8000 -d dmitriipolushin/lab2_python_app:latest

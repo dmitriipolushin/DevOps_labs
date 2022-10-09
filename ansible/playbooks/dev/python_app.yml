@@ -3,4 +3,4 @@
 
   roles:
     - geerlingguy.docker
-    
+    - ../../roles/deploy_python_app

@@ -1,0 +1,6 @@
+- hosts: all
+  become: yes
+
+  roles:
+    - geerlingguy.docker
+    - ../../roles/deploy_python_app

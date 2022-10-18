@@ -3,7 +3,7 @@ WORKDIR /app_python
 
 RUN pip install pip==21.3.1
 RUN pip install -U setuptools pip
-ADD ./app_python/requirements.txt ./
+ADD ./requirements.txt ./
 RUN pip install -r requirements.txt
 COPY ./ ./
 

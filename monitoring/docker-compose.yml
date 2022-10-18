@@ -1,0 +1,75 @@
+version: '3.7'
+
+services:
+  app_python:
+    image: dmitriipolushin/lab2_python_app:latest
+    ports:
+       - "8000:8000"
+    networks:
+      - monitoring
+    logging:
+        driver: "json-file"
+        options:
+          max-size: "100m"
+          tag: "{{.ImageName}}"
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: monitoring.grafana
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ${PWD}/grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - NETWORK_ACCESS=internal
+      - VIRTUAL_PORT=3000
+    restart: unless-stopped
+    expose:
+      - 3000
+    ports:
+      - "3000:3000"
+    networks:
+      - monitoring
+    labels:
+      org.label-schema.group: "monitoring"
+
+  promtail:
+    image: grafana/promtail:latest
+    container_name: monitoring.promtail
+    expose:
+      - 9080
+    ports:
+      - "9080:9080"
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - promtail-data:/var/lib/promtail/positions
+      - ${PWD}/promtail/promtail.yml:/etc/promtail/promtail.yml
+    command:
+      - '-config.file=/etc/promtail/promtail.yml'
+    restart: unless-stopped
+    networks:
+      - monitoring
+    labels:
+      org.label-schema.group: "monitoring"
+
+  loki:
+    container_name: monitoring.loki
+    image: grafana/loki:latest
+    expose:
+      - 3100
+    ports:
+      - "3100:3100"
+    restart: unless-stopped
+    networks:
+      - monitoring
+    labels:
+      org.label-schema.group: "monitoring"
+
+networks:
+  monitoring:
+    ipam:
+      driver: default
+
+volumes:
+  grafana-data: {}
+  loki-data: {}
+  promtail-data: {}

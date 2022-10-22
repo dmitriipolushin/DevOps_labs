@@ -11,4 +11,4 @@
 
 ## Grafana dashboard with app logs
 
-![grafana container logs](grafana.png)
+![grafana container logs](assets/grafana.png)

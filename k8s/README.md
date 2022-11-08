@@ -51,3 +51,17 @@ service/python-app   LoadBalancer   10.106.138.236   <pending>     8000:30749/TC
 🎉  Opening service default/python-app in default browser...
 ❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
 ```
+
+# Lab 10
+
+```
+> kubectl get pods,svc                                                                                                             [10:18:39]
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/app-python-chart-6dff5874b8-5sblc   1/1     Running   0          2m36s
+
+NAME                       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+service/app-python-chart   ClusterIP   10.102.5.130   <none>        8000/TCP   2m37s
+service/kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP    13h
+```
+
+![](helm.png)

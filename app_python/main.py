@@ -12,6 +12,7 @@ def moscow_time():
     Visits().add_visits(time)
     return time
 
+
 @app.get('/visits', response_class=PlainTextResponse)
 def get_visits():
     return Visits().get_visits()

@@ -13,7 +13,8 @@ services:
         max-size: "100m"
         tag: "{{.ImageName}}"
     mem_limit: 100m
-  
+    volumes:
+      - app_python-logs:/code/logs
   prometheus:
     image: prom/prometheus:v2.18.1
     container_name: monitoring.prometheus
@@ -123,3 +124,4 @@ volumes:
   loki-data: {}
   promtail-data: {}
   prometheus-data: {}
+  app_python-logs: {}

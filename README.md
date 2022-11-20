@@ -34,6 +34,13 @@ If you will not get any errors go to http://127.0.0.1:8000 to see the result. Up
 
 To see the documentation of our application go to http://127.0.0.1:8000/docs#/
 
+## Available endpoints
+
+- get the current Moscow time by root path `/`. This request also will add the time to logs
+- get the list of logs by `/visits`
+
+
+
 ## Github Actions
 ---------------
 

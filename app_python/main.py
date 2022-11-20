@@ -1,11 +1,18 @@
-from datetime import datetime
-import pytz
 from fastapi import FastAPI
+from fastapi.responses import PlainTextResponse
+from controllers.time_controller import Time_controller
+from controllers.visits import Visits
 
 app = FastAPI()
 
 
-@app.get("/")
+@app.get('/')
 def moscow_time():
-    time_now = datetime.now(pytz.timezone('Europe/Moscow'))
-    return time_now.strftime("%d/%m/%Y %H:%M:%S")
+    time = Time_controller().moscow_time()
+    Visits().add_visits(time)
+    return time
+
+
+@app.get('/visits', response_class=PlainTextResponse)
+def get_visits():
+    return Visits().get_visits()

@@ -41,6 +41,16 @@ In this project implemented Github Action with CI for python code. It has 5 step
 
 Install dependencies -> Check the code with linter -> Run unit tests -> Build Docker image -> Push it to Docker hub
 
+## Unit Tests
+-------------
+The list of best practices that I used in unit tests:
+
+1. Write tests for a number of scenarios
+2. Write good test names. The format of test names: test_apiroute_scenario
+3. Set up automated tests. All tests are running in Github Actions
+4. Reduce test dependencies. Tests should not be dependent on each other
+5. All tests have descriptions
+
 # Node.js
 
 ## Requirements

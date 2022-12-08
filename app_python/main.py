@@ -1,11 +1,11 @@
 from datetime import datetime
 import pytz
+from .controllers.time_controller import moscow_time
 from fastapi import FastAPI
 
 app = FastAPI()
 
 
 @app.get("/")
-def moscow_time():
-    time_now = datetime.now(pytz.timezone('Europe/Moscow'))
-    return time_now.strftime("%d/%m/%Y %H:%M:%S")
+def get_moscow_time():
+    return moscow_time()

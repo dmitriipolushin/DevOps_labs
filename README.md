@@ -1,5 +1,7 @@
 # Moscow time web application Python/Node.js
 
+![CI](https://github.com/dmitriipolushin/DevOps_labs/actions/workflows/app_python.yml/badge.svg)
+
 ## Introduction
 ---------------
 
@@ -17,14 +19,13 @@ This application is built on [Python](https://www.python.org). Before you start 
 
 The project is built with docker. To get the latest version of you need to push docker image with command:
 ```
-docker push dmitriipolushin/lab2_python_app:tagname
+docker pull dmitriipolushin/lab2_python_app:tagname
 ```
 After it to start the project you need to run:
 
 ```
-docker run -p 8000:8000 lab2_python_app
+docker run -p 8000:8000 dmitriipolushin/lab2_python_app
 ```
-
 
 ## Results
 --------------
@@ -32,6 +33,23 @@ docker run -p 8000:8000 lab2_python_app
 If you will not get any errors go to http://127.0.0.1:8000 to see the result. Update the page to update the time
 
 To see the documentation of our application go to http://127.0.0.1:8000/docs#/
+
+## Github Actions
+---------------
+
+In this project implemented Github Action with CI for python code. It has 5 steps:
+
+Install dependencies -> Check the code with linter -> Run unit tests -> Build Docker image -> Push it to Docker hub
+
+## Unit Tests
+-------------
+The list of best practices that I used in unit tests:
+
+1. Write tests for a number of scenarios
+2. Write good test names. The format of test names: test_apiroute_scenario
+3. Set up automated tests. All tests are running in Github Actions
+4. Reduce test dependencies. Tests should not be dependent on each other
+5. All tests have descriptions
 
 # Node.js
 
